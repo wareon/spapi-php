@@ -2,6 +2,7 @@
   "name": "wareon/spapi-php",
   "description": "Amazon Selling Partner API Client",
   "type": "library",
+  "license": "MIT",
   "authors": [
      {
          "name": "wareon",
