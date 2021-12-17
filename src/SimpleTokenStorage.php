@@ -25,6 +25,7 @@ class SimpleTokenStorage implements TokenStorageInterface {
     }
 
 
+    
     public function storeToken($key, $value)
     {
         $json = [];
