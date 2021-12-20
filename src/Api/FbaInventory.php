@@ -25,11 +25,12 @@ class FbaInventory extends Client {
   *    - *sellerSkus* array - A list of seller SKUs for which to return inventory summaries. You may specify up to 50 SKUs.
   *    - *nextToken* string - String token returned in the response of your previous request.
   *    - *marketplaceIds* array - The marketplace ID for the marketplace for which to return inventory summaries.
-  *
+  * @param $version
+  * @return mixed
   */
-  public function getInventorySummaries($queryParams = [])
+  public function getInventorySummaries($queryParams = [], $version = 'v1')
   {
-    return $this->send("/fba/inventory/v1/summaries", [
+    return $this->send("/fba/inventory/{$version}/summaries", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);

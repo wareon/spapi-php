@@ -21,11 +21,12 @@ class FulfillmentInbound extends Client {
   *    - *marketplaceId* string - A marketplace identifier. Specifies the marketplace where the product would be stored.
   *    - *sellerSKUList* array - A list of SellerSKU values. Used to identify items for which you want inbound guidance for shipment to Amazon's fulfillment network. Note: SellerSKU is qualified by the SellerId, which is included with every Selling Partner API operation that you submit. If you specify a SellerSKU that identifies a variation parent ASIN, this operation returns an error. A variation parent ASIN represents a generic product that cannot be sold. Variation child ASINs represent products that have specific characteristics (such as size and color) and can be sold. 
   *    - *aSINList* array - A list of ASIN values. Used to identify items for which you want inbound guidance for shipment to Amazon's fulfillment network. Note: If you specify a ASIN that identifies a variation parent ASIN, this operation returns an error. A variation parent ASIN represents a generic product that cannot be sold. Variation child ASINs represent products that have specific characteristics (such as size and color) and can be sold.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getInboundGuidance($queryParams = [])
+  public function getInboundGuidance($queryParams = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/itemsGuidance", [
+    return $this->send("/fba/inbound/{$version}/itemsGuidance", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -33,11 +34,12 @@ class FulfillmentInbound extends Client {
 
   /**
   * Operation createInboundShipmentPlan
-  *
+  * @param $version
+   * @return mixed
   */
-  public function createInboundShipmentPlan($body = [])
+  public function createInboundShipmentPlan($body = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/plans", [
+    return $this->send("/fba/inbound/{$version}/plans", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -47,11 +49,12 @@ class FulfillmentInbound extends Client {
   * Operation createInboundShipment
   *
   * @param string $shipmentId A shipment identifier originally returned by the createInboundShipmentPlan operation.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function createInboundShipment($shipmentId, $body = [])
+  public function createInboundShipment($shipmentId, $body = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -61,11 +64,12 @@ class FulfillmentInbound extends Client {
   * Operation updateInboundShipment
   *
   * @param string $shipmentId A shipment identifier originally returned by the createInboundShipmentPlan operation.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function updateInboundShipment($shipmentId, $body = [])
+  public function updateInboundShipment($shipmentId, $body = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}", [
       'method' => 'PUT',
       'json' => $body
     ]);
@@ -78,11 +82,12 @@ class FulfillmentInbound extends Client {
   *
   * @param array $queryParams
   *    - *marketplaceId* string - A marketplace identifier. Specifies the marketplace the shipment is tied to.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getPreorderInfo($shipmentId, $queryParams = [])
+  public function getPreorderInfo($shipmentId, $queryParams = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}/preorder", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}/preorder", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -96,11 +101,12 @@ class FulfillmentInbound extends Client {
   * @param array $queryParams
   *    - *needByDate* string - Date that the shipment must arrive at the Amazon fulfillment center to avoid delivery promise breaks for pre-ordered items. Must be in YYYY-MM-DD format. The response to the getPreorderInfo operation returns this value.
   *    - *marketplaceId* string - A marketplace identifier. Specifies the marketplace the shipment is tied to.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function confirmPreorder($shipmentId, $queryParams = [])
+  public function confirmPreorder($shipmentId, $queryParams = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}/preorder/confirm", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}/preorder/confirm", [
       'method' => 'PUT',
       'query' => $queryParams,
     ]);
@@ -117,11 +123,12 @@ class FulfillmentInbound extends Client {
   *    - *aSINList* array - A list of ASIN values. Used to identify items for which you want item preparation instructions to help with item sourcing decisions.
   *
   *Note: ASINs must be included in the product catalog for at least one of the marketplaces that the seller  participates in. Any ASIN that is not included in the product catalog for at least one of the marketplaces that the seller participates in is returned in the InvalidASINList property in the response. You can find out which marketplaces a seller participates in by calling the getMarketplaceParticipations operation in the Selling Partner API for Sellers.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getPrepInstructions($queryParams = [])
+  public function getPrepInstructions($queryParams = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/prepInstructions", [
+    return $this->send("/fba/inbound/{$version}/prepInstructions", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -131,11 +138,12 @@ class FulfillmentInbound extends Client {
   * Operation getTransportDetails
   *
   * @param string $shipmentId A shipment identifier originally returned by the createInboundShipmentPlan operation.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getTransportDetails($shipmentId)
+  public function getTransportDetails($shipmentId, $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}/transport", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}/transport", [
       'method' => 'GET',
     ]);
   }
@@ -144,11 +152,12 @@ class FulfillmentInbound extends Client {
   * Operation putTransportDetails
   *
   * @param string $shipmentId A shipment identifier originally returned by the createInboundShipmentPlan operation.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function putTransportDetails($shipmentId, $body = [])
+  public function putTransportDetails($shipmentId, $body = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}/transport", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}/transport", [
       'method' => 'PUT',
       'json' => $body
     ]);
@@ -158,11 +167,12 @@ class FulfillmentInbound extends Client {
   * Operation voidTransport
   *
   * @param string $shipmentId A shipment identifier originally returned by the createInboundShipmentPlan operation.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function voidTransport($shipmentId)
+  public function voidTransport($shipmentId, $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}/transport/void", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}/transport/void", [
       'method' => 'POST',
     ]);
   }
@@ -171,11 +181,12 @@ class FulfillmentInbound extends Client {
   * Operation estimateTransport
   *
   * @param string $shipmentId A shipment identifier originally returned by the createInboundShipmentPlan operation.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function estimateTransport($shipmentId)
+  public function estimateTransport($shipmentId, $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}/transport/estimate", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}/transport/estimate", [
       'method' => 'POST',
     ]);
   }
@@ -184,11 +195,12 @@ class FulfillmentInbound extends Client {
   * Operation confirmTransport
   *
   * @param string $shipmentId A shipment identifier originally returned by the createInboundShipmentPlan operation.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function confirmTransport($shipmentId)
+  public function confirmTransport($shipmentId, $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}/transport/confirm", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}/transport/confirm", [
       'method' => 'POST',
     ]);
   }
@@ -206,11 +218,12 @@ class FulfillmentInbound extends Client {
   *
   *Must match CartonId values previously passed using the FBA Inbound Shipment Carton Information Feed. If not, the operation returns the IncorrectPackageIdentifier error code.
   *    - *numberOfPallets* integer - The number of pallets in the shipment. This returns four identical labels for each pallet.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getLabels($shipmentId, $queryParams = [])
+  public function getLabels($shipmentId, $queryParams = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}/labels", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}/labels", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -220,11 +233,12 @@ class FulfillmentInbound extends Client {
   * Operation getBillOfLading
   *
   * @param string $shipmentId A shipment identifier originally returned by the createInboundShipmentPlan operation.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getBillOfLading($shipmentId)
+  public function getBillOfLading($shipmentId, $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}/billOfLading", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}/billOfLading", [
       'method' => 'GET',
     ]);
   }
@@ -240,11 +254,12 @@ class FulfillmentInbound extends Client {
   *    - *queryType* string - Indicates whether shipments are returned using shipment information (by providing the ShipmentStatusList or ShipmentIdList parameters), using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or by using NextToken to continue returning items specified in a previous request.
   *    - *nextToken* string - A string token returned in the response to your previous request.
   *    - *marketplaceId* string - A marketplace identifier. Specifies the marketplace where the product would be stored.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getShipments($queryParams = [])
+  public function getShipments($queryParams = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments", [
+    return $this->send("/fba/inbound/{$version}/shipments", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -257,11 +272,12 @@ class FulfillmentInbound extends Client {
   *
   * @param array $queryParams
   *    - *marketplaceId* string - A marketplace identifier. Specifies the marketplace where the product would be stored.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getShipmentItemsByShipmentId($shipmentId, $queryParams = [])
+  public function getShipmentItemsByShipmentId($shipmentId, $queryParams = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipments/{$shipmentId}/items", [
+    return $this->send("/fba/inbound/{$version}/shipments/{$shipmentId}/items", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -276,11 +292,12 @@ class FulfillmentInbound extends Client {
   *    - *queryType* string - Indicates whether items are returned using a date range (by providing the LastUpdatedAfter and LastUpdatedBefore parameters), or using NextToken, which continues returning items specified in a previous request.
   *    - *nextToken* string - A string token returned in the response to your previous request.
   *    - *marketplaceId* string - A marketplace identifier. Specifies the marketplace where the product would be stored.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getShipmentItems($queryParams = [])
+  public function getShipmentItems($queryParams = [], $version = 'v0')
   {
-    return $this->send("/fba/inbound/v0/shipmentItems", [
+    return $this->send("/fba/inbound/{$version}/shipmentItems", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);

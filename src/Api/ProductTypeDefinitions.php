@@ -20,11 +20,12 @@ class ProductTypeDefinitions extends Client {
   * @param array $queryParams
   *    - *keywords* array - A comma-delimited list of keywords to search product types by.
   *    - *marketplaceIds* array - A comma-delimited list of Amazon marketplace identifiers for the request.
-  *
+   * @param string $version
+   * @return mixed
   */
-  public function searchDefinitionsProductTypes($queryParams = [])
+  public function searchDefinitionsProductTypes($queryParams = [], $version = '2020-09-01')
   {
-    return $this->send("/definitions/2020-09-01/productTypes", [
+    return $this->send("/definitions/{$version}/productTypes", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -42,11 +43,12 @@ class ProductTypeDefinitions extends Client {
   *    - *requirements* string - The name of the requirements set to retrieve requirements for.
   *    - *requirementsEnforced* string - Identifies if the required attributes for a requirements set are enforced by the product type definition schema. Non-enforced requirements enable structural validation of individual attributes without all the required attributes being present (such as for partial updates).
   *    - *locale* string - Locale for retrieving display labels and other presentation details. Defaults to the default language of the first marketplace in the request.
-  *
+   * @param string $version
+   * @return mixed
   */
-  public function getDefinitionsProductType($productType, $queryParams = [])
+  public function getDefinitionsProductType($productType, $queryParams = [], $version = '2020-09-01')
   {
-    return $this->send("/definitions/2020-09-01/productTypes/{$productType}", [
+    return $this->send("/definitions/{$version}/productTypes/{$productType}", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);

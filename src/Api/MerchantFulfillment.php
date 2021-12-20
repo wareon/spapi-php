@@ -16,11 +16,12 @@ class MerchantFulfillment extends Client {
 
   /**
   * Operation getEligibleShipmentServicesOld
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getEligibleShipmentServicesOld($body = [])
+  public function getEligibleShipmentServicesOld($body = [], $version = 'v0')
   {
-    return $this->send("/mfn/v0/eligibleServices", [
+    return $this->send("/mfn/{$version}/eligibleServices", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -28,11 +29,12 @@ class MerchantFulfillment extends Client {
 
   /**
   * Operation getEligibleShipmentServices
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getEligibleShipmentServices($body = [])
+  public function getEligibleShipmentServices($body = [], $version = 'v0')
   {
-    return $this->send("/mfn/v0/eligibleShippingServices", [
+    return $this->send("/mfn/{$version}/eligibleShippingServices", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -42,11 +44,12 @@ class MerchantFulfillment extends Client {
   * Operation getShipment
   *
   * @param string $shipmentId The Amazon-defined shipment identifier for the shipment.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getShipment($shipmentId)
+  public function getShipment($shipmentId, $version = 'v0')
   {
-    return $this->send("/mfn/v0/shipments/{$shipmentId}", [
+    return $this->send("/mfn/{$version}/shipments/{$shipmentId}", [
       'method' => 'GET',
     ]);
   }
@@ -55,11 +58,12 @@ class MerchantFulfillment extends Client {
   * Operation cancelShipment
   *
   * @param string $shipmentId The Amazon-defined shipment identifier for the shipment to cancel.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function cancelShipment($shipmentId)
+  public function cancelShipment($shipmentId, $version = 'v0')
   {
-    return $this->send("/mfn/v0/shipments/{$shipmentId}", [
+    return $this->send("/mfn/{$version}/shipments/{$shipmentId}", [
       'method' => 'DELETE',
     ]);
   }
@@ -68,22 +72,24 @@ class MerchantFulfillment extends Client {
   * Operation cancelShipmentOld
   *
   * @param string $shipmentId The Amazon-defined shipment identifier for the shipment to cancel.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function cancelShipmentOld($shipmentId)
+  public function cancelShipmentOld($shipmentId, $version = 'v0')
   {
-    return $this->send("/mfn/v0/shipments/{$shipmentId}/cancel", [
+    return $this->send("/mfn/{$version}/shipments/{$shipmentId}/cancel", [
       'method' => 'PUT',
     ]);
   }
 
   /**
   * Operation createShipment
-  *
+   * @param $version
+   * @return mixed
   */
-  public function createShipment($body = [])
+  public function createShipment($body = [], $version = 'v0')
   {
-    return $this->send("/mfn/v0/shipments", [
+    return $this->send("/mfn/{$version}/shipments", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -91,11 +97,12 @@ class MerchantFulfillment extends Client {
 
   /**
   * Operation getAdditionalSellerInputsOld
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getAdditionalSellerInputsOld($body = [])
+  public function getAdditionalSellerInputsOld($body = [], $version = 'v0')
   {
-    return $this->send("/mfn/v0/sellerInputs", [
+    return $this->send("/mfn/{$version}/sellerInputs", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -103,11 +110,12 @@ class MerchantFulfillment extends Client {
 
   /**
   * Operation getAdditionalSellerInputs
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getAdditionalSellerInputs($body = [])
+  public function getAdditionalSellerInputs($body = [], $version = 'v0')
   {
-    return $this->send("/mfn/v0/additionalSellerInputs", [
+    return $this->send("/mfn/{$version}/additionalSellerInputs", [
       'method' => 'POST',
       'json' => $body
     ]);

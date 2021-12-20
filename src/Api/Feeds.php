@@ -25,11 +25,12 @@ class Feeds extends Client {
   *    - *createdSince* string - The earliest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is 90 days ago. Feeds are retained for a maximum of 90 days.
   *    - *createdUntil* string - The latest feed creation date and time for feeds included in the response, in ISO 8601 format. The default is now.
   *    - *nextToken* string - A string token returned in the response to your previous request. nextToken is returned when the number of results exceeds the specified pageSize value. To get the next page of results, call the getFeeds operation and include this token as the only parameter. Specifying nextToken with any other parameters will cause the request to fail.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getFeeds($queryParams = [])
+  public function getFeeds($queryParams = [], $version = '2021-06-30')
   {
-    return $this->send("/feeds/2021-06-30/feeds", [
+    return $this->send("/feeds/{$version}/feeds", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -37,11 +38,12 @@ class Feeds extends Client {
 
   /**
   * Operation createFeed
-  *
+   * @param $version
+   * @return mixed
   */
-  public function createFeed($body = [])
+  public function createFeed($body = [], $version = '2021-06-30')
   {
-    return $this->send("/feeds/2021-06-30/feeds", [
+    return $this->send("/feeds/{$version}/feeds", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -51,11 +53,12 @@ class Feeds extends Client {
   * Operation cancelFeed
   *
   * @param string $feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function cancelFeed($feedId)
+  public function cancelFeed($feedId, $version = '2021-06-30')
   {
-    return $this->send("/feeds/2021-06-30/feeds/{$feedId}", [
+    return $this->send("/feeds/{$version}/feeds/{$feedId}", [
       'method' => 'DELETE',
     ]);
   }
@@ -64,22 +67,24 @@ class Feeds extends Client {
   * Operation getFeed
   *
   * @param string $feedId The identifier for the feed. This identifier is unique only in combination with a seller ID.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getFeed($feedId)
+  public function getFeed($feedId, $version = '2021-06-30')
   {
-    return $this->send("/feeds/2021-06-30/feeds/{$feedId}", [
+    return $this->send("/feeds/{$version}/feeds/{$feedId}", [
       'method' => 'GET',
     ]);
   }
 
   /**
   * Operation createFeedDocument
-  *
+   * @param $version
+   * @return mixed
   */
-  public function createFeedDocument($body = [])
+  public function createFeedDocument($body = [], $version = '2021-06-30')
   {
-    return $this->send("/feeds/2021-06-30/documents", [
+    return $this->send("/feeds/{$version}/documents", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -89,11 +94,12 @@ class Feeds extends Client {
   * Operation getFeedDocument
   *
   * @param string $feedDocumentId The identifier of the feed document.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getFeedDocument($feedDocumentId)
+  public function getFeedDocument($feedDocumentId, $version = '2021-06-30')
   {
-    return $this->send("/feeds/2021-06-30/documents/{$feedDocumentId}", [
+    return $this->send("/feeds/{$version}/documents/{$feedDocumentId}", [
       'method' => 'GET',
     ]);
   }

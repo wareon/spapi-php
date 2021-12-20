@@ -23,9 +23,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function getMessagingActionsForOrder($amazonOrderId, $queryParams = [])
+  public function getMessagingActionsForOrder($amazonOrderId, $queryParams = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -40,9 +40,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function confirmCustomizationDetails($amazonOrderId, $queryParams = [], $body = [])
+  public function confirmCustomizationDetails($amazonOrderId, $queryParams = [], $body = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}/messages/confirmCustomizationDetails", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}/messages/confirmCustomizationDetails", [
       'method' => 'POST',
       'query' => $queryParams,
       'json' => $body
@@ -58,9 +58,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function createConfirmDeliveryDetails($amazonOrderId, $queryParams = [], $body = [])
+  public function createConfirmDeliveryDetails($amazonOrderId, $queryParams = [], $body = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}/messages/confirmDeliveryDetails", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}/messages/confirmDeliveryDetails", [
       'method' => 'POST',
       'query' => $queryParams,
       'json' => $body
@@ -76,9 +76,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function createLegalDisclosure($amazonOrderId, $queryParams = [], $body = [])
+  public function createLegalDisclosure($amazonOrderId, $queryParams = [], $body = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}/messages/legalDisclosure", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}/messages/legalDisclosure", [
       'method' => 'POST',
       'query' => $queryParams,
       'json' => $body
@@ -94,9 +94,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function createNegativeFeedbackRemoval($amazonOrderId, $queryParams = [])
+  public function createNegativeFeedbackRemoval($amazonOrderId, $queryParams = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}/messages/negativeFeedbackRemoval", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}/messages/negativeFeedbackRemoval", [
       'method' => 'POST',
       'query' => $queryParams,
     ]);
@@ -111,9 +111,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function createConfirmOrderDetails($amazonOrderId, $queryParams = [], $body = [])
+  public function createConfirmOrderDetails($amazonOrderId, $queryParams = [], $body = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}/messages/confirmOrderDetails", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}/messages/confirmOrderDetails", [
       'method' => 'POST',
       'query' => $queryParams,
       'json' => $body
@@ -129,9 +129,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function createConfirmServiceDetails($amazonOrderId, $queryParams = [], $body = [])
+  public function createConfirmServiceDetails($amazonOrderId, $queryParams = [], $body = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}/messages/confirmServiceDetails", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}/messages/confirmServiceDetails", [
       'method' => 'POST',
       'query' => $queryParams,
       'json' => $body
@@ -147,9 +147,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function CreateAmazonMotors($amazonOrderId, $queryParams = [], $body = [])
+  public function CreateAmazonMotors($amazonOrderId, $queryParams = [], $body = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}/messages/amazonMotors", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}/messages/amazonMotors", [
       'method' => 'POST',
       'query' => $queryParams,
       'json' => $body
@@ -165,9 +165,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function CreateWarranty($amazonOrderId, $queryParams = [], $body = [])
+  public function CreateWarranty($amazonOrderId, $queryParams = [], $body = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}/messages/warranty", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}/messages/warranty", [
       'method' => 'POST',
       'query' => $queryParams,
       'json' => $body
@@ -183,9 +183,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function GetAttributes($amazonOrderId, $queryParams = [])
+  public function GetAttributes($amazonOrderId, $queryParams = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}/attributes", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}/attributes", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -200,9 +200,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function createDigitalAccessKey($amazonOrderId, $queryParams = [], $body = [])
+  public function createDigitalAccessKey($amazonOrderId, $queryParams = [], $body = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}/messages/digitalAccessKey", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}/messages/digitalAccessKey", [
       'method' => 'POST',
       'query' => $queryParams,
       'json' => $body
@@ -218,9 +218,9 @@ class Messaging extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function createUnexpectedProblem($amazonOrderId, $queryParams = [], $body = [])
+  public function createUnexpectedProblem($amazonOrderId, $queryParams = [], $body = [], $version = 'v1')
   {
-    return $this->send("/messaging/v1/orders/{$amazonOrderId}/messages/unexpectedProblem", [
+    return $this->send("/messaging/{$version}/orders/{$amazonOrderId}/messages/unexpectedProblem", [
       'method' => 'POST',
       'query' => $queryParams,
       'json' => $body

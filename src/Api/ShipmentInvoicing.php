@@ -20,9 +20,9 @@ class ShipmentInvoicing extends Client {
   * @param string $shipmentId The identifier for the shipment. Get this value from the FBAOutboundShipmentStatus notification. For information about subscribing to notifications, see the [Notifications API Use Case Guide](https://github.com/amzn/selling-partner-api-docs/blob/main/guides/en-US/use-case-guides/notifications-api-use-case-guide/notifications-use-case-guide-v1.md).
   *
   */
-  public function getShipmentDetails($shipmentId)
+  public function getShipmentDetails($shipmentId, $version = 'v0')
   {
-    return $this->send("/fba/outbound/brazil/v0/shipments/{$shipmentId}", [
+    return $this->send("/fba/outbound/brazil/{$version}/shipments/{$shipmentId}", [
       'method' => 'GET',
     ]);
   }
@@ -33,9 +33,9 @@ class ShipmentInvoicing extends Client {
   * @param string $shipmentId The identifier for the shipment.
   *
   */
-  public function submitInvoice($shipmentId, $body = [])
+  public function submitInvoice($shipmentId, $body = [], $version = 'v0')
   {
-    return $this->send("/fba/outbound/brazil/v0/shipments/{$shipmentId}/invoice", [
+    return $this->send("/fba/outbound/brazil/{$version}/shipments/{$shipmentId}/invoice", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -47,9 +47,9 @@ class ShipmentInvoicing extends Client {
   * @param string $shipmentId The shipment identifier for the shipment.
   *
   */
-  public function getInvoiceStatus($shipmentId)
+  public function getInvoiceStatus($shipmentId, $version = 'v0')
   {
-    return $this->send("/fba/outbound/brazil/v0/shipments/{$shipmentId}/invoice/status", [
+    return $this->send("/fba/outbound/brazil/{$version}/shipments/{$shipmentId}/invoice/status", [
       'method' => 'GET',
     ]);
   }

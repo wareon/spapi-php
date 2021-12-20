@@ -21,11 +21,12 @@ class FbaInboundEligibility extends Client {
   *    - *marketplaceIds* array - The identifier for the marketplace in which you want to determine eligibility. Required only when program=INBOUND.
   *    - *asin* string - The ASIN of the item for which you want an eligibility preview.
   *    - *program* string - The program that you want to check eligibility against.
-  *
+  * @param string $version
+  * @return mixed
   */
-  public function getItemEligibilityPreview($queryParams = [])
+  public function getItemEligibilityPreview($queryParams = [], $version = 'v1')
   {
-    return $this->send("/fba/inbound/v1/eligibility/itemPreview", [
+    return $this->send("/fba/inbound/{$version}/eligibility/itemPreview", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);

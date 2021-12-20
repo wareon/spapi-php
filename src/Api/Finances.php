@@ -22,11 +22,12 @@ class Finances extends Client {
   *    - *financialEventGroupStartedBefore* string - A date used for selecting financial event groups that opened before (but not at) a specified date and time, in ISO 8601 format. The date-time  must be later than FinancialEventGroupStartedAfter and no later than two minutes before the request was submitted. If FinancialEventGroupStartedAfter and FinancialEventGroupStartedBefore are more than 180 days apart, no financial event groups are returned.
   *    - *financialEventGroupStartedAfter* string - A date used for selecting financial event groups that opened after (or at) a specified date and time, in ISO 8601 format. The date-time must be no later than two minutes before the request was submitted.
   *    - *nextToken* string - A string token returned in the response of your previous request.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function listFinancialEventGroups($queryParams = [])
+  public function listFinancialEventGroups($queryParams = [], $version = 'v0')
   {
-    return $this->send("/finances/v0/financialEventGroups", [
+    return $this->send("/finances/{$version}/financialEventGroups", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -40,11 +41,12 @@ class Finances extends Client {
   * @param array $queryParams
   *    - *maxResultsPerPage* integer - The maximum number of results to return per page.
   *    - *nextToken* string - A string token returned in the response of your previous request.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function listFinancialEventsByGroupId($eventGroupId, $queryParams = [])
+  public function listFinancialEventsByGroupId($eventGroupId, $queryParams = [], $version = 'v0')
   {
-    return $this->send("/finances/v0/financialEventGroups/{$eventGroupId}/financialEvents", [
+    return $this->send("/finances/{$version}/financialEventGroups/{$eventGroupId}/financialEvents", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -58,11 +60,12 @@ class Finances extends Client {
   * @param array $queryParams
   *    - *maxResultsPerPage* integer - The maximum number of results to return per page.
   *    - *nextToken* string - A string token returned in the response of your previous request.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function listFinancialEventsByOrderId($orderId, $queryParams = [])
+  public function listFinancialEventsByOrderId($orderId, $queryParams = [], $version = 'v0')
   {
-    return $this->send("/finances/v0/orders/{$orderId}/financialEvents", [
+    return $this->send("/finances/{$version}/orders/{$orderId}/financialEvents", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -76,11 +79,12 @@ class Finances extends Client {
   *    - *postedAfter* string - A date used for selecting financial events posted after (or at) a specified time. The date-time must be no later than two minutes before the request was submitted, in ISO 8601 date time format.
   *    - *postedBefore* string - A date used for selecting financial events posted before (but not at) a specified time. The date-time must be later than PostedAfter and no later than two minutes before the request was submitted, in ISO 8601 date time format. If PostedAfter and PostedBefore are more than 180 days apart, no financial events are returned. You must specify the PostedAfter parameter if you specify the PostedBefore parameter. Default: Now minus two minutes.
   *    - *nextToken* string - A string token returned in the response of your previous request.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function listFinancialEvents($queryParams = [])
+  public function listFinancialEvents($queryParams = [], $version = 'v0')
   {
-    return $this->send("/finances/v0/financialEvents", [
+    return $this->send("/finances/{$version}/financialEvents", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);

@@ -18,9 +18,9 @@ class Shipping extends Client {
   * Operation createShipment
   *
   */
-  public function createShipment($body = [])
+  public function createShipment($body = [], $version = 'v1')
   {
-    return $this->send("/shipping/v1/shipments", [
+    return $this->send("/shipping/{$version}/shipments", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -32,9 +32,9 @@ class Shipping extends Client {
   * @param string $shipmentId 
   *
   */
-  public function getShipment($shipmentId)
+  public function getShipment($shipmentId, $version = 'v1')
   {
-    return $this->send("/shipping/v1/shipments/{$shipmentId}", [
+    return $this->send("/shipping/{$version}/shipments/{$shipmentId}", [
       'method' => 'GET',
     ]);
   }
@@ -45,9 +45,9 @@ class Shipping extends Client {
   * @param string $shipmentId 
   *
   */
-  public function cancelShipment($shipmentId)
+  public function cancelShipment($shipmentId, $version = 'v1')
   {
-    return $this->send("/shipping/v1/shipments/{$shipmentId}/cancel", [
+    return $this->send("/shipping/{$version}/shipments/{$shipmentId}/cancel", [
       'method' => 'POST',
     ]);
   }
@@ -58,9 +58,9 @@ class Shipping extends Client {
   * @param string $shipmentId 
   *
   */
-  public function purchaseLabels($shipmentId, $body = [])
+  public function purchaseLabels($shipmentId, $body = [], $version = 'v1')
   {
-    return $this->send("/shipping/v1/shipments/{$shipmentId}/purchaseLabels", [
+    return $this->send("/shipping/{$version}/shipments/{$shipmentId}/purchaseLabels", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -73,9 +73,9 @@ class Shipping extends Client {
   * @param string $trackingId 
   *
   */
-  public function retrieveShippingLabel($shipmentId, $trackingId, $body = [])
+  public function retrieveShippingLabel($shipmentId, $trackingId, $body = [], $version = 'v1')
   {
-    return $this->send("/shipping/v1/shipments/{$shipmentId}/containers/{$trackingId}/label", [
+    return $this->send("/shipping/{$version}/shipments/{$shipmentId}/containers/{$trackingId}/label", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -85,9 +85,9 @@ class Shipping extends Client {
   * Operation purchaseShipment
   *
   */
-  public function purchaseShipment($body = [])
+  public function purchaseShipment($body = [], $version = 'v1')
   {
-    return $this->send("/shipping/v1/purchaseShipment", [
+    return $this->send("/shipping/{$version}/purchaseShipment", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -97,9 +97,9 @@ class Shipping extends Client {
   * Operation getRates
   *
   */
-  public function getRates($body = [])
+  public function getRates($body = [], $version = 'v1')
   {
-    return $this->send("/shipping/v1/rates", [
+    return $this->send("/shipping/{$version}/rates", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -109,9 +109,9 @@ class Shipping extends Client {
   * Operation getAccount
   *
   */
-  public function getAccount()
+  public function getAccount($version = 'v1')
   {
-    return $this->send("/shipping/v1/account", [
+    return $this->send("/shipping/{$version}/account", [
       'method' => 'GET',
     ]);
   }
@@ -122,9 +122,9 @@ class Shipping extends Client {
   * @param string $trackingId 
   *
   */
-  public function getTrackingInformation($trackingId)
+  public function getTrackingInformation($trackingId, $version = 'v1')
   {
-    return $this->send("/shipping/v1/tracking/{$trackingId}", [
+    return $this->send("/shipping/{$version}/tracking/{$trackingId}", [
       'method' => 'GET',
     ]);
   }

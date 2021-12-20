@@ -21,11 +21,12 @@ class Authorization extends Client {
   *    - *sellingPartnerId* string - The seller ID of the seller for whom you are requesting Selling Partner API authorization. This must be the seller ID of the seller who authorized your application on the Marketplace Appstore.
   *    - *developerId* string - Your developer ID. This must be one of the developer ID values that you provided when you registered your application in Developer Central.
   *    - *mwsAuthToken* string - The MWS Auth Token that was generated when the seller authorized your application on the Marketplace Appstore.
-  *
+  * @param $version
+  * @return  mixed
   */
-  public function getAuthorizationCode($queryParams = [])
+  public function getAuthorizationCode($queryParams = [], $version = 'v1')
   {
-    return $this->send("/authorization/v1/authorizationCode", [
+    return $this->send("/authorization/{$version}/authorizationCode", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);

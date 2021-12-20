@@ -27,11 +27,12 @@ class Sales extends Client {
   *    - *firstDayOfWeek* string - Specifies the day that the week starts on when granularity=Week, either Monday or Sunday. Default: Monday. Example: Sunday, if you want the week to start on a Sunday.
   *    - *asin* string - Filters the results by the ASIN that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all ASINs. Example: B0792R1RSN, if you want the response to include order metrics for only ASIN B0792R1RSN.
   *    - *sku* string - Filters the results by the SKU that you specify. Specifying both ASIN and SKU returns an error. Do not include this filter if you want the response to include order metrics for all SKUs. Example: TestSKU, if you want the response to include order metrics for only SKU TestSKU.
-  *
+   * @param string $version
+   * @return mixed
   */
-  public function getOrderMetrics($queryParams = [])
+  public function getOrderMetrics($queryParams = [], $version = 'v1')
   {
-    return $this->send("/sales/v1/orderMetrics", [
+    return $this->send("/sales/{$version}/orderMetrics", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);

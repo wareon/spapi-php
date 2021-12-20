@@ -20,9 +20,9 @@ class Services extends Client {
   * @param string $serviceJobId A service job identifier.
   *
   */
-  public function getServiceJobByServiceJobId($serviceJobId)
+  public function getServiceJobByServiceJobId($serviceJobId, $version = 'v1')
   {
-    return $this->send("/service/v1/serviceJobs/{$serviceJobId}", [
+    return $this->send("/service/{$version}/serviceJobs/{$serviceJobId}", [
       'method' => 'GET',
     ]);
   }
@@ -36,9 +36,9 @@ class Services extends Client {
   *    - *cancellationReasonCode* string - A cancel reason code that specifies the reason for cancelling a service job.
   *
   */
-  public function cancelServiceJobByServiceJobId($serviceJobId, $queryParams = [])
+  public function cancelServiceJobByServiceJobId($serviceJobId, $queryParams = [], $version = 'v1')
   {
-    return $this->send("/service/v1/serviceJobs/{$serviceJobId}/cancellations", [
+    return $this->send("/service/{$version}/serviceJobs/{$serviceJobId}/cancellations", [
       'method' => 'PUT',
       'query' => $queryParams,
     ]);
@@ -50,9 +50,9 @@ class Services extends Client {
   * @param string $serviceJobId An Amazon defined service job identifier.
   *
   */
-  public function completeServiceJobByServiceJobId($serviceJobId)
+  public function completeServiceJobByServiceJobId($serviceJobId, $version = 'v1')
   {
-    return $this->send("/service/v1/serviceJobs/{$serviceJobId}/completions", [
+    return $this->send("/service/{$version}/serviceJobs/{$serviceJobId}/completions", [
       'method' => 'PUT',
     ]);
   }
@@ -76,9 +76,9 @@ class Services extends Client {
   *    - *marketplaceIds* array - Used to select jobs that were placed in the specified marketplaces. 
   *
   */
-  public function getServiceJobs($queryParams = [])
+  public function getServiceJobs($queryParams = [], $version = 'v1')
   {
-    return $this->send("/service/v1/serviceJobs", [
+    return $this->send("/service/{$version}/serviceJobs", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -90,9 +90,9 @@ class Services extends Client {
   * @param string $serviceJobId An Amazon defined service job identifier.
   *
   */
-  public function addAppointmentForServiceJobByServiceJobId($serviceJobId, $body = [])
+  public function addAppointmentForServiceJobByServiceJobId($serviceJobId, $body = [], $version = 'v1')
   {
-    return $this->send("/service/v1/serviceJobs/{$serviceJobId}/appointments", [
+    return $this->send("/service/{$version}/serviceJobs/{$serviceJobId}/appointments", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -105,9 +105,9 @@ class Services extends Client {
   * @param string $appointmentId An existing appointment identifier for the Service Job.
   *
   */
-  public function rescheduleAppointmentForServiceJobByServiceJobId($serviceJobId, $appointmentId, $body = [])
+  public function rescheduleAppointmentForServiceJobByServiceJobId($serviceJobId, $appointmentId, $body = [], $version = 'v1')
   {
-    return $this->send("/service/v1/serviceJobs/{$serviceJobId}/appointments/{$appointmentId}", [
+    return $this->send("/service/{$version}/serviceJobs/{$serviceJobId}/appointments/{$appointmentId}", [
       'method' => 'POST',
       'json' => $body
     ]);

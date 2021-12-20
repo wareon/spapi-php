@@ -16,11 +16,12 @@ class FulfillmentOutbound extends Client {
 
   /**
   * Operation getFulfillmentPreview
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getFulfillmentPreview($body = [])
+  public function getFulfillmentPreview($body = [], $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/fulfillmentOrders/preview", [
+    return $this->send("/fba/outbound/{$version}/fulfillmentOrders/preview", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -32,11 +33,12 @@ class FulfillmentOutbound extends Client {
   * @param array $queryParams
   *    - *queryStartDate* string - A date used to select fulfillment orders that were last updated after (or at) a specified time. An update is defined as any change in fulfillment order status, including the creation of a new fulfillment order.
   *    - *nextToken* string - A string token returned in the response to your previous request.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function listAllFulfillmentOrders($queryParams = [])
+  public function listAllFulfillmentOrders($queryParams = [], $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/fulfillmentOrders", [
+    return $this->send("/fba/outbound/{$version}/fulfillmentOrders", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -44,11 +46,12 @@ class FulfillmentOutbound extends Client {
 
   /**
   * Operation createFulfillmentOrder
-  *
+   * @param $version
+   * @return mixed
   */
-  public function createFulfillmentOrder($body = [])
+  public function createFulfillmentOrder($body = [], $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/fulfillmentOrders", [
+    return $this->send("/fba/outbound/{$version}/fulfillmentOrders", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -59,11 +62,12 @@ class FulfillmentOutbound extends Client {
   *
   * @param array $queryParams
   *    - *packageNumber* integer - The unencrypted package identifier returned by the getFulfillmentOrder operation.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getPackageTrackingDetails($queryParams = [])
+  public function getPackageTrackingDetails($queryParams = [], $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/tracking", [
+    return $this->send("/fba/outbound/{$version}/tracking", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -77,11 +81,12 @@ class FulfillmentOutbound extends Client {
   *    - *marketplaceId* string - The marketplace for which the seller wants return reason codes.
   *    - *sellerFulfillmentOrderId* string - The identifier assigned to the item by the seller when the fulfillment order was created. The service uses this value to determine the marketplace for which the seller wants return reason codes.
   *    - *language* string - The language that the TranslatedDescription property of the ReasonCodeDetails response object should be translated into.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function listReturnReasonCodes($queryParams = [])
+  public function listReturnReasonCodes($queryParams = [], $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/returnReasonCodes", [
+    return $this->send("/fba/outbound/{$version}/returnReasonCodes", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -91,11 +96,12 @@ class FulfillmentOutbound extends Client {
   * Operation createFulfillmentReturn
   *
   * @param string $sellerFulfillmentOrderId An identifier assigned by the seller to the fulfillment order at the time it was created. The seller uses their own records to find the correct SellerFulfillmentOrderId value based on the buyer's request to return items.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function createFulfillmentReturn($sellerFulfillmentOrderId, $body = [])
+  public function createFulfillmentReturn($sellerFulfillmentOrderId, $body = [], $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/fulfillmentOrders/{$sellerFulfillmentOrderId}/return", [
+    return $this->send("/fba/outbound/{$version}/fulfillmentOrders/{$sellerFulfillmentOrderId}/return", [
       'method' => 'PUT',
       'json' => $body
     ]);
@@ -105,11 +111,12 @@ class FulfillmentOutbound extends Client {
   * Operation getFulfillmentOrder
   *
   * @param string $sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getFulfillmentOrder($sellerFulfillmentOrderId)
+  public function getFulfillmentOrder($sellerFulfillmentOrderId, $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/fulfillmentOrders/{$sellerFulfillmentOrderId}", [
+    return $this->send("/fba/outbound/{$version}/fulfillmentOrders/{$sellerFulfillmentOrderId}", [
       'method' => 'GET',
     ]);
   }
@@ -118,11 +125,12 @@ class FulfillmentOutbound extends Client {
   * Operation updateFulfillmentOrder
   *
   * @param string $sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function updateFulfillmentOrder($sellerFulfillmentOrderId, $body = [])
+  public function updateFulfillmentOrder($sellerFulfillmentOrderId, $body = [], $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/fulfillmentOrders/{$sellerFulfillmentOrderId}", [
+    return $this->send("/fba/outbound/{$version}/fulfillmentOrders/{$sellerFulfillmentOrderId}", [
       'method' => 'PUT',
       'json' => $body
     ]);
@@ -132,11 +140,12 @@ class FulfillmentOutbound extends Client {
   * Operation cancelFulfillmentOrder
   *
   * @param string $sellerFulfillmentOrderId The identifier assigned to the item by the seller when the fulfillment order was created.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function cancelFulfillmentOrder($sellerFulfillmentOrderId)
+  public function cancelFulfillmentOrder($sellerFulfillmentOrderId, $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/fulfillmentOrders/{$sellerFulfillmentOrderId}/cancel", [
+    return $this->send("/fba/outbound/{$version}/fulfillmentOrders/{$sellerFulfillmentOrderId}/cancel", [
       'method' => 'PUT',
     ]);
   }
@@ -146,11 +155,12 @@ class FulfillmentOutbound extends Client {
   *
   * @param array $queryParams
   *    - *marketplaceId* string - The marketplace for which to return the list of features.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getFeatures($queryParams = [])
+  public function getFeatures($queryParams = [], $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/features", [
+    return $this->send("/fba/outbound/{$version}/features", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -164,11 +174,12 @@ class FulfillmentOutbound extends Client {
   * @param array $queryParams
   *    - *marketplaceId* string - The marketplace for which to return a list of the inventory that is eligible for the specified feature.
   *    - *nextToken* string - A string token returned in the response to your previous request that is used to return the next response page. A value of null will return the first page.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getFeatureInventory($featureName, $queryParams = [])
+  public function getFeatureInventory($featureName, $queryParams = [], $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/features/inventory/{$featureName}", [
+    return $this->send("/fba/outbound/{$version}/features/inventory/{$featureName}", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -182,11 +193,12 @@ class FulfillmentOutbound extends Client {
   *
   * @param array $queryParams
   *    - *marketplaceId* string - The marketplace for which to return the count.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getFeatureSKU($featureName, $sellerSku, $queryParams = [])
+  public function getFeatureSKU($featureName, $sellerSku, $queryParams = [], $version = '2020-07-01')
   {
-    return $this->send("/fba/outbound/2020-07-01/features/inventory/{$featureName}/{$sellerSku}", [
+    return $this->send("/fba/outbound/{$version}/features/inventory/{$featureName}/{$sellerSku}", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);

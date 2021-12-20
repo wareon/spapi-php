@@ -18,6 +18,7 @@ class CatalogItems extends Client {
   * Operation searchCatalogItems
   *
   * @param array $queryParams
+  *
   *    - *keywords* array - A comma-delimited list of words or item identifiers to search the Amazon catalog for.
   *    - *marketplaceIds* array - A comma-delimited list of Amazon marketplace identifiers for the request.
   *    - *includedData* array - A comma-delimited list of data sets to include in the response. Default: summaries.
@@ -27,11 +28,12 @@ class CatalogItems extends Client {
   *    - *pageToken* string - A token to fetch a certain page when there are multiple pages worth of results.
   *    - *keywordsLocale* string - The language the keywords are provided in. Defaults to the primary locale of the marketplace.
   *    - *locale* string - Locale for retrieving localized summaries. Defaults to the primary locale of the marketplace.
-  *
+   * @param string $version
+  * @return mixed
   */
-  public function searchCatalogItems($queryParams = [])
+  public function searchCatalogItems($queryParams = [], $version = '2020-12-01')
   {
-    return $this->send("/catalog/2020-12-01/items", [
+    return $this->send("/catalog/{$version}/items", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -43,16 +45,64 @@ class CatalogItems extends Client {
   * @param string $asin The Amazon Standard Identification Number (ASIN) of the item.
   *
   * @param array $queryParams
+  *
   *    - *marketplaceIds* array - A comma-delimited list of Amazon marketplace identifiers. Data sets in the response contain data only for the specified marketplaces.
   *    - *includedData* array - A comma-delimited list of data sets to include in the response. Default: summaries.
   *    - *locale* string - Locale for retrieving localized summaries. Defaults to the primary locale of the marketplace.
-  *
+   * @param string $version
+  * @return mixed
   */
-  public function getCatalogItem($asin, $queryParams = [])
+  public function getCatalogItem($asin, $queryParams = [], $version = '2020-12-01')
   {
-    return $this->send("/catalog/2020-12-01/items/{$asin}", [
+    return $this->send("/catalog/{$version}/items/{$asin}", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
   }
+
+
+  /**
+  * Operation listCatalogItems
+  *
+  * @param array $queryParams
+  *
+  *    - *MarketplaceId* array - A comma-delimited list of Amazon marketplace identifiers. Data sets in the response contain data only for the specified marketplaces.
+  *    - *Query* string Keyword(s) to use to search for items in the catalog. Example: 'harry potter books'.
+  *    - *QueryContextId* string - An identifier for the context within which the given search will be performed. A marketplace might provide mechanisms for constraining a search to a subset of potential items. For example, the retail marketplace allows queries to be constrained to a specific category. The QueryContextId parameter specifies such a subset. If it is omitted, the search will be performed using the default context for the marketplace, which will typically contain the largest set of items.
+  *    - *SellerSKU* string - Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
+  *    - *UPC* string - A 12-digit bar code used for retail packaging.
+  *    - *EAN* string - A European article number that uniquely identifies the catalog item, manufacturer, and its attributes.
+  *    - *ISBN* string - The unique commercial book identifier used to identify books internationally.
+  *    - *JAN* string - A Japanese article number that uniquely identifies the product, manufacturer, and its attributes.
+   * @param string $version
+  * @return mixed
+  */
+  public function listCatalogItems($queryParams = [], $version = 'v0')
+  {
+    return $this->send("/catalog/{$version}/items", [
+      'method' => 'GET',
+      'query' => $queryParams,
+    ]);
+  }
+
+
+  /**
+  * Operation listCatalogCategories
+  *
+  * @param array $queryParams
+  *
+  *    - *MarketplaceId* string - A marketplace identifier. Specifies the marketplace for the item.
+  *    - *ASIN* string - optional	The Amazon Standard Identification Number (ASIN) of the item.
+  *    - *SellerSKU* string - Used to identify items in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
+   * @param string $version
+  * @return mixed
+  */
+  public function listCatalogCategories($queryParams = [], $version = 'v0')
+  {
+    return $this->send("/catalog/{$version}/categories", [
+      'method' => 'GET',
+      'query' => $queryParams,
+    ]);
+  }
+
 }

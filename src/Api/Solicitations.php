@@ -23,9 +23,9 @@ class Solicitations extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function getSolicitationActionsForOrder($amazonOrderId, $queryParams = [])
+  public function getSolicitationActionsForOrder($amazonOrderId, $queryParams = [], $version = 'v1')
   {
-    return $this->send("/solicitations/v1/orders/{$amazonOrderId}", [
+    return $this->send("/solicitations/{$version}/orders/{$amazonOrderId}", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -40,9 +40,9 @@ class Solicitations extends Client {
   *    - *marketplaceIds* array - A marketplace identifier. This specifies the marketplace in which the order was placed. Only one marketplace can be specified.
   *
   */
-  public function createProductReviewAndSellerFeedbackSolicitation($amazonOrderId, $queryParams = [])
+  public function createProductReviewAndSellerFeedbackSolicitation($amazonOrderId, $queryParams = [], $version = 'v1')
   {
-    return $this->send("/solicitations/v1/orders/{$amazonOrderId}/solicitations/productReviewAndSellerFeedback", [
+    return $this->send("/solicitations/{$version}/orders/{$amazonOrderId}/solicitations/productReviewAndSellerFeedback", [
       'method' => 'POST',
       'query' => $queryParams,
     ]);

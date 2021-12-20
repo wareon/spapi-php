@@ -22,9 +22,9 @@ class Notifications extends Client {
   * For more information about notification types, see the Notifications API Use Case Guide.
   *
   */
-  public function createSubscription($notificationType, $body = [])
+  public function createSubscription($notificationType, $body = [], $version = 'v1')
   {
-    return $this->send("/notifications/v1/subscriptions/{$notificationType}", [
+    return $this->send("/notifications/{$version}/subscriptions/{$notificationType}", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -38,9 +38,9 @@ class Notifications extends Client {
   * For more information about notification types, see the Notifications API Use Case Guide.
   *
   */
-  public function getSubscription($notificationType)
+  public function getSubscription($notificationType, $version = 'v1')
   {
-    return $this->send("/notifications/v1/subscriptions/{$notificationType}", [
+    return $this->send("/notifications/{$version}/subscriptions/{$notificationType}", [
       'method' => 'GET',
     ]);
   }
@@ -54,9 +54,9 @@ class Notifications extends Client {
   * For more information about notification types, see the Notifications API Use Case Guide.
   *
   */
-  public function deleteSubscriptionById($subscriptionId, $notificationType)
+  public function deleteSubscriptionById($subscriptionId, $notificationType, $version = 'v1')
   {
-    return $this->send("/notifications/v1/subscriptions/{$notificationType}/{$subscriptionId}", [
+    return $this->send("/notifications/{$version}/subscriptions/{$notificationType}/{$subscriptionId}", [
       'method' => 'DELETE',
     ]);
   }
@@ -70,9 +70,9 @@ class Notifications extends Client {
   * For more information about notification types, see the Notifications API Use Case Guide.
   *
   */
-  public function getSubscriptionById($subscriptionId, $notificationType)
+  public function getSubscriptionById($subscriptionId, $notificationType, $version = 'v1')
   {
-    return $this->send("/notifications/v1/subscriptions/{$notificationType}/{$subscriptionId}", [
+    return $this->send("/notifications/{$version}/subscriptions/{$notificationType}/{$subscriptionId}", [
       'method' => 'GET',
     ]);
   }
@@ -81,9 +81,9 @@ class Notifications extends Client {
   * Operation createDestination
   *
   */
-  public function createDestination($body = [])
+  public function createDestination($body = [], $version = 'v1')
   {
-    return $this->send("/notifications/v1/destinations", [
+    return $this->send("/notifications/{$version}/destinations", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -93,9 +93,9 @@ class Notifications extends Client {
   * Operation getDestinations
   *
   */
-  public function getDestinations()
+  public function getDestinations($version = 'v1')
   {
-    return $this->send("/notifications/v1/destinations", [
+    return $this->send("/notifications/{$version}/destinations", [
       'method' => 'GET',
     ]);
   }
@@ -106,9 +106,9 @@ class Notifications extends Client {
   * @param string $destinationId The identifier generated when you created the destination.
   *
   */
-  public function getDestination($destinationId)
+  public function getDestination($destinationId, $version = 'v1')
   {
-    return $this->send("/notifications/v1/destinations/{$destinationId}", [
+    return $this->send("/notifications/{$version}/destinations/{$destinationId}", [
       'method' => 'GET',
     ]);
   }
@@ -119,9 +119,9 @@ class Notifications extends Client {
   * @param string $destinationId The identifier for the destination that you want to delete.
   *
   */
-  public function deleteDestination($destinationId)
+  public function deleteDestination($destinationId, $version = 'v1')
   {
-    return $this->send("/notifications/v1/destinations/{$destinationId}", [
+    return $this->send("/notifications/{$version}/destinations/{$destinationId}", [
       'method' => 'DELETE',
     ]);
   }

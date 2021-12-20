@@ -18,11 +18,13 @@ class ProductFees extends Client {
   * Operation getMyFeesEstimateForSKU
   *
   * @param string $sellerSKU Used to identify an item in the given marketplace. SellerSKU is qualified by the seller's SellerId, which is included with every operation that you submit.
-  *
+  * @param $body
+  * @param string $version
+  * @return mixed
   */
-  public function getMyFeesEstimateForSKU($sellerSKU, $body = [])
+  public function getMyFeesEstimateForSKU($sellerSKU, $body = [], $version = 'v0')
   {
-    return $this->send("/products/fees/v0/listings/{$sellerSKU}/feesEstimate", [
+    return $this->send("/products/fees/{$version}/listings/{$sellerSKU}/feesEstimate", [
       'method' => 'POST',
       'json' => $body
     ]);
@@ -32,11 +34,13 @@ class ProductFees extends Client {
   * Operation getMyFeesEstimateForASIN
   *
   * @param string $asin The Amazon Standard Identification Number (ASIN) of the item.
-  *
+   * @param  $body
+   * @param string $version
+   * @return mixed
   */
-  public function getMyFeesEstimateForASIN($asin, $body = [])
+  public function getMyFeesEstimateForASIN($asin, $body = [], $version = 'v0')
   {
-    return $this->send("/products/fees/v0/items/{$asin}/feesEstimate", [
+    return $this->send("/products/fees/{$version}/items/{$asin}/feesEstimate", [
       'method' => 'POST',
       'json' => $body
     ]);

@@ -16,11 +16,12 @@ class Sellers extends Client {
 
   /**
   * Operation getMarketplaceParticipations
-  *
+   * @param string $version
+   * @return mixed
   */
-  public function getMarketplaceParticipations()
+  public function getMarketplaceParticipations($version = 'v1')
   {
-    return $this->send("/sellers/v1/marketplaceParticipations", [
+    return $this->send("/sellers/{$version}/marketplaceParticipations", [
       'method' => 'GET',
     ]);
   }

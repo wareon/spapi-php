@@ -23,11 +23,12 @@ class ProductPricing extends Client {
   *    - *skus* array - A list of up to twenty seller SKU values used to identify items in the given marketplace.
   *    - *itemType* string - Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter.
   *    - *itemCondition* string - Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
-  *
+   * @param string $version
+   * @return mixed
   */
-  public function getPricing($queryParams = [])
+  public function getPricing($queryParams = [], $version = 'v0')
   {
-    return $this->send("/products/pricing/v0/price", [
+    return $this->send("/products/pricing/{$version}/price", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -41,11 +42,12 @@ class ProductPricing extends Client {
   *    - *asins* array - A list of up to twenty Amazon Standard Identification Number (ASIN) values used to identify items in the given marketplace.
   *    - *skus* array - A list of up to twenty seller SKU values used to identify items in the given marketplace.
   *    - *itemType* string - Indicates whether ASIN values or seller SKU values are used to identify items. If you specify Asin, the information in the response will be dependent on the list of Asins you provide in the Asins parameter. If you specify Sku, the information in the response will be dependent on the list of Skus you provide in the Skus parameter. Possible values: Asin, Sku.
-  *
+   * @param string $version
+   * @return mixed
   */
-  public function getCompetitivePricing($queryParams = [])
+  public function getCompetitivePricing($queryParams = [], $version = 'v0')
   {
-    return $this->send("/products/pricing/v0/competitivePrice", [
+    return $this->send("/products/pricing/{$version}/competitivePrice", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -59,11 +61,12 @@ class ProductPricing extends Client {
   * @param array $queryParams
   *    - *marketplaceId* string - A marketplace identifier. Specifies the marketplace for which prices are returned.
   *    - *itemCondition* string - Filters the offer listings based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
-  *
+   * @param string $version
+   * @return mixed
   */
-  public function getListingOffers($sellerSKU, $queryParams = [])
+  public function getListingOffers($sellerSKU, $queryParams = [], $version = 'v0')
   {
-    return $this->send("/products/pricing/v0/listings/{$sellerSKU}/offers", [
+    return $this->send("/products/pricing/{$version}/listings/{$sellerSKU}/offers", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -77,11 +80,12 @@ class ProductPricing extends Client {
   * @param array $queryParams
   *    - *marketplaceId* string - A marketplace identifier. Specifies the marketplace for which prices are returned.
   *    - *itemCondition* string - Filters the offer listings to be considered based on item condition. Possible values: New, Used, Collectible, Refurbished, Club.
-  *
+   * @param string $version
+   * @return mixed
   */
-  public function getItemOffers($asin, $queryParams = [])
+  public function getItemOffers($asin, $queryParams = [], $version = 'v0')
   {
-    return $this->send("/products/pricing/v0/items/{$asin}/offers", [
+    return $this->send("/products/pricing/{$version}/items/{$asin}/offers", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);

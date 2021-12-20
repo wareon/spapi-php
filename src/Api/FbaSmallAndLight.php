@@ -21,11 +21,12 @@ class FbaSmallAndLight extends Client {
   *
   * @param array $queryParams
   *    - *marketplaceIds* array - The marketplace for which the enrollment status is retrieved. Note: Accepts a single marketplace only.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getSmallAndLightEnrollmentBySellerSKU($sellerSKU, $queryParams = [])
+  public function getSmallAndLightEnrollmentBySellerSKU($sellerSKU, $queryParams = [], $version = 'v1')
   {
-    return $this->send("/fba/smallAndLight/v1/enrollments/{$sellerSKU}", [
+    return $this->send("/fba/smallAndLight/{$version}/enrollments/{$sellerSKU}", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -38,11 +39,12 @@ class FbaSmallAndLight extends Client {
   *
   * @param array $queryParams
   *    - *marketplaceIds* array - The marketplace in which to enroll the item. Note: Accepts a single marketplace only.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function putSmallAndLightEnrollmentBySellerSKU($sellerSKU, $queryParams = [])
+  public function putSmallAndLightEnrollmentBySellerSKU($sellerSKU, $queryParams = [], $version = 'v1')
   {
-    return $this->send("/fba/smallAndLight/v1/enrollments/{$sellerSKU}", [
+    return $this->send("/fba/smallAndLight/{$version}/enrollments/{$sellerSKU}", [
       'method' => 'PUT',
       'query' => $queryParams,
     ]);
@@ -55,11 +57,12 @@ class FbaSmallAndLight extends Client {
   *
   * @param array $queryParams
   *    - *marketplaceIds* array - The marketplace in which to remove the item from the Small and Light program. Note: Accepts a single marketplace only.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function deleteSmallAndLightEnrollmentBySellerSKU($sellerSKU, $queryParams = [])
+  public function deleteSmallAndLightEnrollmentBySellerSKU($sellerSKU, $queryParams = [], $version = 'v1')
   {
-    return $this->send("/fba/smallAndLight/v1/enrollments/{$sellerSKU}", [
+    return $this->send("/fba/smallAndLight/{$version}/enrollments/{$sellerSKU}", [
       'method' => 'DELETE',
       'query' => $queryParams,
     ]);
@@ -72,11 +75,12 @@ class FbaSmallAndLight extends Client {
   *
   * @param array $queryParams
   *    - *marketplaceIds* array - The marketplace for which the eligibility status is retrieved. NOTE: Accepts a single marketplace only.
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getSmallAndLightEligibilityBySellerSKU($sellerSKU, $queryParams = [])
+  public function getSmallAndLightEligibilityBySellerSKU($sellerSKU, $queryParams = [], $version = 'v1')
   {
-    return $this->send("/fba/smallAndLight/v1/eligibilities/{$sellerSKU}", [
+    return $this->send("/fba/smallAndLight/{$version}/eligibilities/{$sellerSKU}", [
       'method' => 'GET',
       'query' => $queryParams,
     ]);
@@ -84,11 +88,12 @@ class FbaSmallAndLight extends Client {
 
   /**
   * Operation getSmallAndLightFeePreview
-  *
+   * @param $version
+   * @return mixed
   */
-  public function getSmallAndLightFeePreview($body = [])
+  public function getSmallAndLightFeePreview($body = [], $version = 'v1')
   {
-    return $this->send("/fba/smallAndLight/v1/feePreviews", [
+    return $this->send("/fba/smallAndLight/{$version}/feePreviews", [
       'method' => 'POST',
       'json' => $body
     ]);

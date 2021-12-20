@@ -25,9 +25,9 @@ class Uploads extends Client {
   *    - *contentType* string - The content type of the file to be uploaded.
   *
   */
-  public function createUploadDestinationForResource($resource, $queryParams = [])
+  public function createUploadDestinationForResource($resource, $queryParams = [], $version = '2020-11-01')
   {
-    return $this->send("/uploads/2020-11-01/uploadDestinations/{$resource}", [
+    return $this->send("/uploads/{$version}/uploadDestinations/{$resource}", [
       'method' => 'POST',
       'query' => $queryParams,
     ]);

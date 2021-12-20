@@ -19,9 +19,9 @@ class Tokens extends Client {
   * Operation createRestrictedDataToken
   *
   */
-  public function createRestrictedDataToken($body = [])
+  public function createRestrictedDataToken($body = [], $version = '2021-03-01')
   {
-    return $this->send("/tokens/2021-03-01/restrictedDataToken", [
+    return $this->send("/tokens/{$version}/restrictedDataToken", [
       'method' => 'POST',
       'json' => $body
     ]);
